@@ -4,7 +4,7 @@ import json
 from models.state import State
 
 
-states = {'State': State}
+states = {State.__name__: State}
 
 
 class FileStorage:
