@@ -62,7 +62,7 @@ def number(n):
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
 def number_template(n):
-    """Displays a HTML page only if <n> is an integer.
+    """Displays an HTML page only if <n> is an integer.
 
     Displays the value of <n> in the body.
     """
