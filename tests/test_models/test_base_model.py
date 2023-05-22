@@ -9,14 +9,12 @@ from models.base_model import BaseModel
 from uuid import UUID
 
 
-class test_basemodel(unittest.TestCase):
-    """ Test class for base model """
+class TestBaseModel(unittest.TestCase):
+    """Test class for base model"""
 
-    def __init__(self, *args, **kwargs):
-        """ Constructor for test_basemodel class """
-        super().__init__(*args, **kwargs)
+    def setUp(self):
+        """Set up test environment"""
         self.name = 'BaseModel'
-        self.value = BaseModel
 
     @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db', "FileStorage")
     def setUp(self):
