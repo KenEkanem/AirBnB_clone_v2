@@ -67,4 +67,4 @@ class TestCommand(unittest.TestCase):
         pi = storage.all()[f'City.{result}'].pi
         self.assertEqual(pi, '3.14')
         with patch('sys.stdout', new=io.StringIO()) as f:
-            HBNBCommand().onecmd('create Amenity
+            HBNBCommand().onecmd('create Amenity)
