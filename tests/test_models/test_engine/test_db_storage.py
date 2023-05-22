@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Test module for the Database storage"""
+""" Test module for the Database storage"""
 
 import unittest
 import pycodestyle
@@ -7,8 +7,8 @@ from models.engine.db_storage import DBStorage
 
 
 class TestDBStorage(unittest.TestCase):
-    """Class TestDBStorage for testing the database storage"""
-
+    """ Clas TestDBStorage for testing the database storage"""
+    
     def testPycodeStyle(self):
         """Test for pycodestyle compliancy in DBStorage"""
         style = pycodestyle.StyleGuide(quiet=True)
@@ -28,4 +28,3 @@ class TestDBStorage(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
