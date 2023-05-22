@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-""" State Module for HBNB project """
-from sqlalchemy.ext.declarative import declarative_base
+"""This is the state class"""
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, String
 import models
 from models.city import City
-import shlex
+from os import getenv
 
 
 class State(BaseModel, Base):
@@ -16,20 +15,15 @@ class State(BaseModel, Base):
     """
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
-    cities = relationship("City", cascade='all, delete, delete-orphan',
-                          backref="state")
+    cities = relationship("City", cascade="delete", backref="state")
 
-    @property
-    def cities(self):
-        var = models.storage.all()
-        lista = []
-        result = []
-        for key in var:
-            city = key.replace('.', ' ')
-            city = shlex.split(city)
-            if (city[0] == 'City'):
-                lista.append(var[key])
-        for elem in lista:
-            if (elem.state_id == self.id):
-                result.append(elem)
-        return (result)
+    if getenv("HBNB_TYPE_STORAGE") != "db":
+        @property
+        def cities(self):
+            """Returns a list of all city related objects"""
+            var = list(models.storage.all(City).values())
+            result = []
+            for city in var:
+                if (city.state_id == self.id):
+                    result.append(city)
+            return (result)
